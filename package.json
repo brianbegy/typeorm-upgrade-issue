@@ -28,7 +28,7 @@
   "homepage": "https://github.com/brianbegy/typeorm-upgrade-issue#readme",
   "dependencies": {
     "pg": "^8.7.3",
-    "typeorm": "^0.2.32"
+    "typeorm": "^0.2.45"
   },
   "devDependencies": {
     "@types/node": "^18.0.3",
