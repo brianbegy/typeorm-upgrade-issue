@@ -1,0 +1,36 @@
+{
+  "name": "typeorm-upgrade-issue",
+  "version": "1.0.0",
+  "description": "Reproduces an issue we are having with typeorm",
+  "main": "build/index.js",
+  "license": "ISC",
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "start": "npm run build && node build/index.js",
+    "db:create:schema": "yarn db:setup && yarn  db:create:schema",
+    "db:drop:schema": "yarn  db:drop:schema",
+    "db:migrate": "yarn db:create:schema && yarn  db:migrate",
+    "db:query": "ts-node --transpile-only node_modules/.bin/typeorm query",
+    "db:reset": "echo 'hi' && yarn db:drop:schema && yarn db:create:schema && yarn db:migrate",
+    "db:setup": "yarn db:query 'CREATE SCHEMA IF NOT EXISTS public;'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianbegy/typeorm-upgrade-issue.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/brianbegy/typeorm-upgrade-issue/issues"
+  },
+  "homepage": "https://github.com/brianbegy/typeorm-upgrade-issue#readme",
+  "dependencies": {
+    "pg": "^8.7.3",
+    "typeorm": "^0.2.32"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  }
+}
