@@ -8,12 +8,14 @@
     "build": "tsc --build",
     "clean": "tsc --build --clean",
     "start": "npm run build && node build/index.js",
-    "db:create:schema": "yarn db:setup && yarn  db:create:schema",
+    "db:create:schema": "yarn typeorm query 'CREATE SCHEMA IF NOT EXISTS \"upgradeIssue\"'",
     "db:drop:schema": "yarn  db:drop:schema",
-    "db:migrate": "yarn db:create:schema && yarn  db:migrate",
-    "db:query": "ts-node --transpile-only node_modules/.bin/typeorm query",
-    "db:reset": "echo 'hi' && yarn db:drop:schema && yarn db:create:schema && yarn db:migrate",
-    "db:setup": "yarn db:query 'CREATE SCHEMA IF NOT EXISTS public;'"
+    "db:generate": "yarn typeorm migration:generate",
+    "db:migrate": "yarn typeorm migration:run",
+    "db:query": "yarn ts-node --transpile-only node_modules/.bin/typeorm query",
+    "db:reset": "yarn db:drop:schema && yarn db:create:schema && yarn db:migrate",
+    "db:setup": "yarn db:query 'CREATE SCHEMA IF NOT EXISTS public'",
+    "typeorm": "yarn ts-node --transpile-only node_modules/.bin/typeorm"
   },
   "repository": {
     "type": "git",
